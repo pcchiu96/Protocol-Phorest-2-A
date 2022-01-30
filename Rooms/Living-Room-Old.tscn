@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Player/Old Man.gd" type="Script" id=1]
 [ext_resource path="res://Assets/bedroom-old-bottom-wall.png" type="Texture" id=2]
@@ -21,6 +21,8 @@
 [ext_resource path="res://Assets/old-man-zoom.png" type="Texture" id=19]
 [ext_resource path="res://Assets/Audio/fruit_ninja_sound.wav" type="AudioStream" id=20]
 [ext_resource path="res://Assets/Audio/OldManFootSteps.wav" type="AudioStream" id=21]
+[ext_resource path="res://Assets/Audio/oldman0.4typebeat.wav" type="AudioStream" id=22]
+[ext_resource path="res://Assets/shadow.png" type="Texture" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30, 18 )
@@ -95,7 +97,7 @@ tracks/1/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 21 )
+"stream": ExtResource( 22 )
 } ],
 "times": PoolRealArray( 0 )
 }
@@ -116,6 +118,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 4 ), ExtResource( 3 ) ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 22 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="RectangleShape2D" id=7]
@@ -291,12 +307,9 @@ tracks/0/keys = {
 script = ExtResource( 11 )
 
 [node name="Old Man" type="KinematicBody2D" parent="."]
-position = Vector2( 291, 245 )
+position = Vector2( 529, 348 )
 z_index = 1
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Feet" type="CollisionShape2D" parent="Old Man"]
 shape = SubResource( 1 )
@@ -321,6 +334,12 @@ script = ExtResource( 7 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Old Man"]
 stream = ExtResource( 21 )
+
+[node name="Shadow" type="Sprite" parent="Old Man"]
+modulate = Color( 1, 1, 1, 0.4 )
+position = Vector2( -2, 5 )
+z_index = -1
+texture = ExtResource( 23 )
 
 [node name="Borders" type="StaticBody2D" parent="."]
 __meta__ = {
@@ -381,7 +400,7 @@ flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Burglar"]
 modulate = Color( 0, 0.0392157, 1, 1 )
-position = Vector2( 1257, 481 )
+position = Vector2( 1243, 565 )
 shape = SubResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Burglar"]
@@ -402,6 +421,7 @@ shape = SubResource( 16 )
 [node name="CoffeeTable2" type="StaticBody2D" parent="."]
 position = Vector2( 944, 353 )
 script = ExtResource( 13 )
+promptText = "I used to eat sweets and desserts on this table when I was young."
 
 [node name="CoffeeTable-Sprite" type="Sprite" parent="CoffeeTable2"]
 texture = ExtResource( 9 )

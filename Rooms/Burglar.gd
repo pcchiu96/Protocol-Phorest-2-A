@@ -17,4 +17,4 @@ func _physics_process(delta):
 			triggerAutoInteract()
 
 func triggerAutoInteract():
-		Main.heartAttack(1.5)
+		Main.heartAttack(1)
