@@ -1,0 +1,372 @@
+[gd_scene load_steps=41 format=2]
+
+[ext_resource path="res://Assets/kid-walk-1.png" type="Texture" id=1]
+[ext_resource path="res://Player/Kid.gd" type="Script" id=2]
+[ext_resource path="res://Rooms/TouchySensorArea.gd" type="Script" id=3]
+[ext_resource path="res://Assets/baseball.png" type="Texture" id=4]
+[ext_resource path="res://Assets/bedroom-floor.png" type="Texture" id=5]
+[ext_resource path="res://Assets/cupcake.png" type="Texture" id=6]
+[ext_resource path="res://Assets/kid-walk-2.png" type="Texture" id=7]
+[ext_resource path="res://Assets/apple.png" type="Texture" id=8]
+[ext_resource path="res://Assets/living-room-kid-top-and-sides.png" type="Texture" id=9]
+[ext_resource path="res://Assets/living-room-kid-bottom-wall.png" type="Texture" id=10]
+[ext_resource path="res://Assets/coffee table.png" type="Texture" id=11]
+[ext_resource path="res://Rooms/CoffeeTable.gd" type="Script" id=12]
+[ext_resource path="res://Assets/KidOverlay.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Inspect Icon White.png" type="Texture" id=14]
+[ext_resource path="res://Rooms/DialogBox.gd" type="Script" id=15]
+[ext_resource path="res://Assets/ZenKurenaido-Regular.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://Assets/Alert-Triangle.png" type="Texture" id=17]
+[ext_resource path="res://Assets/new-paper.png" type="Texture" id=18]
+[ext_resource path="res://Assets/KidZoom.png" type="Texture" id=19]
+[ext_resource path="res://Rooms/Baseball.gd" type="Script" id=20]
+[ext_resource path="res://Rooms/FoodSelectionButton.gd" type="Script" id=21]
+[ext_resource path="res://Rooms/SceneLoad.gd" type="Script" id=22]
+[ext_resource path="res://Assets/Cutscenes/EatCupcake.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Cutscenes/EatApple.png" type="Texture" id=25]
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 30, 18 )
+
+[sub_resource type="CircleShape2D" id=12]
+
+[sub_resource type="Animation" id=13]
+resource_name = "Idle"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 7 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "Run Left"
+length = 0.4
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 7 ), ExtResource( 1 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "Run Right"
+length = 0.4
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 7 ), ExtResource( 1 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 640, 92 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 46.5, 360 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 45, 360 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 640, 50 )
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 132, 126 )
+
+[sub_resource type="CircleShape2D" id=22]
+radius = 37.4833
+
+[sub_resource type="Theme" id=18]
+
+[sub_resource type="DynamicFont" id=19]
+size = 35
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+extra_spacing_bottom = -6
+font_data = ExtResource( 16 )
+
+[sub_resource type="Animation" id=20]
+resource_name = "DialogAnimation"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Icon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1100, 653 ), Vector2( 1100, 635 ), Vector2( 1100, 653 ) ]
+}
+
+[sub_resource type="Animation" id=21]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Icon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1168, 648 ) ]
+}
+
+[node name="Living Room Kid" type="Node2D"]
+script = ExtResource( 22 )
+
+[node name="Kid" type="KinematicBody2D" parent="."]
+position = Vector2( 312, 329 )
+z_index = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Feet" type="CollisionShape2D" parent="Kid"]
+shape = SubResource( 11 )
+
+[node name="Sprite" type="Sprite" parent="Kid"]
+position = Vector2( 2, -100 )
+texture = ExtResource( 7 )
+
+[node name="TouchySensorArea" type="Area2D" parent="Kid"]
+script = ExtResource( 3 )
+
+[node name="TouchySensorShape" type="CollisionShape2D" parent="Kid/TouchySensorArea"]
+modulate = Color( 1, 0, 0, 1 )
+shape = SubResource( 12 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Kid"]
+anims/Idle = SubResource( 13 )
+anims/RESET = SubResource( 14 )
+"anims/Run Left" = SubResource( 15 )
+"anims/Run Right" = SubResource( 16 )
+
+[node name="Borders" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Floor" type="Sprite" parent="Borders"]
+z_index = -1
+texture = ExtResource( 5 )
+centered = false
+
+[node name="Top Wall" type="CollisionShape2D" parent="Borders"]
+position = Vector2( 641, 92 )
+shape = SubResource( 7 )
+
+[node name="Left Wall" type="CollisionShape2D" parent="Borders"]
+position = Vector2( 46.5, 360 )
+z_index = -1
+shape = SubResource( 8 )
+
+[node name="Right Wall" type="CollisionShape2D" parent="Borders"]
+position = Vector2( 1235, 360 )
+z_index = -1
+shape = SubResource( 9 )
+
+[node name="Bottom Wall" type="CollisionShape2D" parent="Borders"]
+position = Vector2( 640, 670 )
+z_index = 2
+shape = SubResource( 10 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Bottom Wall - Sprite" type="Sprite" parent="Borders"]
+position = Vector2( 641, 75 )
+texture = ExtResource( 9 )
+centered = false
+offset = Vector2( -640, -75 )
+
+[node name="Top Left Wall - Sprite" type="Sprite" parent="Borders"]
+position = Vector2( 640, 670 )
+z_index = 2
+texture = ExtResource( 10 )
+centered = false
+offset = Vector2( -640, -670 )
+
+[node name="Apple" type="Sprite" parent="."]
+position = Vector2( 915, 309 )
+z_index = 10
+texture = ExtResource( 8 )
+
+[node name="Cupcake" type="Sprite" parent="."]
+position = Vector2( 981, 336 )
+z_index = 10
+texture = ExtResource( 6 )
+
+[node name="KidOverlay" type="Sprite" parent="."]
+position = Vector2( 641, 361 )
+z_index = 2
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CoffeeTable" type="StaticBody2D" parent="."]
+position = Vector2( 944, 353 )
+script = ExtResource( 12 )
+
+[node name="CoffeeTable-Sprite" type="Sprite" parent="CoffeeTable"]
+texture = ExtResource( 11 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoffeeTable"]
+position = Vector2( 1, 0 )
+shape = SubResource( 17 )
+
+[node name="InspectIcon" type="Sprite" parent="CoffeeTable"]
+visible = false
+position = Vector2( 3, -9 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 14 )
+
+[node name="Baseball" type="StaticBody2D" parent="."]
+script = ExtResource( 20 )
+promptText = "Baseball"
+
+[node name="Baseball-Sprite" type="Sprite" parent="Baseball"]
+position = Vector2( 1158, 568 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Baseball"]
+position = Vector2( 1158, 568 )
+shape = SubResource( 22 )
+
+[node name="InspectIcon" type="Sprite" parent="Baseball"]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1165, 552 )
+scale = Vector2( 0.254745, 0.254745 )
+texture = ExtResource( 14 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="DialogBox" type="Control" parent="UI"]
+visible = false
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PaperBG" type="Sprite" parent="UI/DialogBox"]
+position = Vector2( 642, 359 )
+texture = ExtResource( 18 )
+
+[node name="DialogText" type="RichTextLabel" parent="UI/DialogBox"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 168.0
+margin_top = 501.0
+margin_right = 1060.0
+margin_bottom = 678.0
+theme = SubResource( 18 )
+custom_fonts/normal_font = SubResource( 19 )
+text = "Time is always ticking, letting me know I gotta keep on moving."
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="Sprite" parent="UI/DialogBox"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1168, 648 )
+rotation = -3.14159
+scale = Vector2( 0.67968, 0.67968 )
+z_index = 11
+texture = ExtResource( 17 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/DialogBox"]
+anims/DialogAnimation = SubResource( 20 )
+anims/RESET = SubResource( 21 )
+
+[node name="FaceZoom" type="Sprite" parent="UI/DialogBox"]
+position = Vector2( 238, 305 )
+rotation = -3.14159
+scale = Vector2( 0.905713, -0.905713 )
+z_index = -1
+texture = ExtResource( 19 )
+flip_h = true
+
+[node name="FoodSelection" type="Control" parent="UI"]
+visible = false
+margin_left = 2.0
+margin_top = 1.0
+margin_right = 2.0
+margin_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EatApple" type="TextureButton" parent="UI/FoodSelection"]
+margin_left = 487.0
+margin_top = 160.0
+margin_right = 567.0
+margin_bottom = 240.0
+rect_scale = Vector2( 3.49295, 3.49295 )
+texture_normal = ExtResource( 25 )
+expand = true
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+isHealthyChoice = true
+
+[node name="EatCupCake" type="TextureButton" parent="UI/FoodSelection"]
+margin_left = 772.0
+margin_top = 174.0
+margin_right = 818.0
+margin_bottom = 220.0
+rect_scale = Vector2( 5.77153, 5.77153 )
+texture_normal = ExtResource( 23 )
+expand = true
+flip_h = true
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

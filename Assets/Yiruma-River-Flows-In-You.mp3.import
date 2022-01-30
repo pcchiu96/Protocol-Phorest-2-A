@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Yiruma-River-Flows-In-You.mp3-ad7001d07493ffe5c8a10fd9aa1ebea4.mp3str"
+
+[deps]
+
+source_file="res://Assets/Yiruma-River-Flows-In-You.mp3"
+dest_files=[ "res://.import/Yiruma-River-Flows-In-You.mp3-ad7001d07493ffe5c8a10fd9aa1ebea4.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

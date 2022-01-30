@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Defuse_Start.mp3-40fc63ce01ac4ad60f460fbc7e0f1d0c.mp3str"
+
+[deps]
+
+source_file="res://Assets/Defuse_Start.mp3"
+dest_files=[ "res://.import/Defuse_Start.mp3-40fc63ce01ac4ad60f460fbc7e0f1d0c.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
