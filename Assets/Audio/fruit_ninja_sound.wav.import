@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fruit_ninja_sound.wav-2d332a51bc0a2113b7016ecfb48fd051.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/fruit_ninja_sound.wav"
+dest_files=[ "res://.import/fruit_ninja_sound.wav-2d332a51bc0a2113b7016ecfb48fd051.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
