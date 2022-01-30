@@ -159,7 +159,7 @@ tracks/0/keys = {
 script = ExtResource( 22 )
 
 [node name="Kid" type="KinematicBody2D" parent="."]
-position = Vector2( 312, 329 )
+position = Vector2( 207, 304 )
 z_index = 1
 script = ExtResource( 2 )
 __meta__ = {
@@ -253,6 +253,7 @@ __meta__ = {
 [node name="CoffeeTable" type="StaticBody2D" parent="."]
 position = Vector2( 944, 353 )
 script = ExtResource( 12 )
+promptText = "There's an apple and a cupcake"
 
 [node name="CoffeeTable-Sprite" type="Sprite" parent="CoffeeTable"]
 texture = ExtResource( 11 )

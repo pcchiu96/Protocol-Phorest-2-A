@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Player/Old Man.gd" type="Script" id=1]
 [ext_resource path="res://Assets/bedroom-old-bottom-wall.png" type="Texture" id=2]
@@ -19,6 +19,8 @@
 [ext_resource path="res://Assets/old-paper.png" type="Texture" id=17]
 [ext_resource path="res://Assets/Alert-Triangle.png" type="Texture" id=18]
 [ext_resource path="res://Assets/old-man-zoom.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Audio/fruit_ninja_sound.wav" type="AudioStream" id=20]
+[ext_resource path="res://Assets/Audio/OldManFootSteps.wav" type="AudioStream" id=21]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30, 18 )
@@ -39,6 +41,16 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ ExtResource( 3 ) ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [  ],
+"times": PoolRealArray(  )
 }
 
 [sub_resource type="Animation" id=4]
@@ -72,6 +84,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 4 ), ExtResource( 3 ) ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 21 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=6]
@@ -112,6 +138,7 @@ radius = 284.253
 
 [sub_resource type="Animation" id=12]
 resource_name = "BurglerAttack"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Burglar:position")
 tracks/0/interp = 1
@@ -119,7 +146,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.5, 0.8 ),
+"times": PoolRealArray( 0.8, 1.1, 1.3, 1.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 947, 239 ), Vector2( 1072, 253 ), Vector2( 1323, 254 ), Vector2( 1566, 233 ) ]
@@ -131,7 +158,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3, 0.5, 0.6, 0.7, 0.8 ),
+"times": PoolRealArray( 0.8, 1.1, 1.3, 1.4, 1.5, 1.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 64.4863, 106.702, 204.638, -39.1941, 7.01487 ]
@@ -143,7 +170,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.8 ),
+"times": PoolRealArray( 0.8, 1.1, 1.2, 1.3, 1.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.683521, 0.683521 ), Vector2( 0.683521, 0.683521 ), Vector2( 0.683521, 0.517908 ), Vector2( 0.683521, 0.816775 ), Vector2( 0.684, 0.684 ) ]
@@ -159,6 +186,20 @@ tracks/3/keys = {
 "transitions": PoolRealArray(  ),
 "update": 1,
 "values": [  ]
+}
+tracks/4/type = "audio"
+tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 20 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=13]
@@ -204,7 +245,7 @@ tracks/2/keys = {
 extents = Vector2( 88.5, 33 )
 
 [sub_resource type="RectangleShape2D" id=17]
-extents = Vector2( 132, 107 )
+extents = Vector2( 132, 126 )
 
 [sub_resource type="Theme" id=18]
 
@@ -278,6 +319,9 @@ anims/RESET = SubResource( 4 )
 "anims/Run Right" = SubResource( 6 )
 script = ExtResource( 7 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Old Man"]
+stream = ExtResource( 21 )
+
 [node name="Borders" type="StaticBody2D" parent="."]
 __meta__ = {
 "_edit_group_": true,
@@ -311,6 +355,7 @@ shape = SubResource( 9 )
 
 [node name="Sprite" type="Sprite" parent="Borders"]
 position = Vector2( 640, 670 )
+z_index = 2
 texture = ExtResource( 2 )
 centered = false
 offset = Vector2( -640, -670 )
@@ -343,6 +388,9 @@ shape = SubResource( 11 )
 anims/BurglerAttack = SubResource( 12 )
 anims/RESET = SubResource( 13 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Burglar"]
+stream = ExtResource( 20 )
+
 [node name="RoomExit" type="StaticBody2D" parent="."]
 script = ExtResource( 12 )
 roomname = "Hallway"
@@ -359,7 +407,7 @@ script = ExtResource( 13 )
 texture = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CoffeeTable2"]
-position = Vector2( 1, 19 )
+position = Vector2( 1, 0 )
 shape = SubResource( 17 )
 
 [node name="InspectIcon" type="Sprite" parent="CoffeeTable2"]
