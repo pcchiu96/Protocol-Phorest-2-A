@@ -13,9 +13,7 @@ func _input(event):
 		print("Interact Pressed")
 		print(isActive)
 		if(isActive):
-			Main.currentRoom = roomname
-			find_parent("Bedroom-Old").find_node("DialogBox").displayDialog("Do you think I'm a-door-able?")
-			SceneChanger.change_scene("res://Rooms/" + roomname + "-"+  Main.getIsOldString() +".tscn")
+			find_parent("Bedroom-Kid").find_node("DialogBox").displayDialog("Your fate 'hinges' on what you choose to do here.")
 
 func triggerOptions():
 	find_node("AlarmSelection").visible = true
@@ -24,7 +22,6 @@ func triggerOptions():
 func interactHover():
 	print("Exit - Hover")
 	isActive = true
-			
 	
 func interactLeave():
 	print("Exit - Leave")
