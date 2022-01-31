@@ -9,4 +9,6 @@ func _ready():
 func triggerOptions():
 	Main.gameData["NinjaSafe"] = true
 	
-	Main.growUp(1.5)
+	get_node("Sfx").play()
+	
+	Main.growUp(0, "BaseballScene")

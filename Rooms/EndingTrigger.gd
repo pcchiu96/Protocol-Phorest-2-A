@@ -11,6 +11,7 @@ func _ready():
 func _input(event):
 	if Input.is_action_pressed("ui_interact"):
 		if(isActive):
+			Main.glMusicController.stopAll()
 			SceneChanger.change_scene("res://Rooms/Start Screen.tscn", 0, "Ending")
 
 		

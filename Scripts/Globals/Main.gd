@@ -13,6 +13,8 @@ var isFrozen
 
 var currentRoom = "Bedroom"
 
+var glMusicController
+
 
 func _ready():
 	isOld = true
@@ -28,8 +30,10 @@ func getIsOldString():
 
 func heartAttack(delay): 
 	isOld = false
+	glMusicController.playOldMan()
 	SceneChanger.change_scene("res://Rooms/" + currentRoom + "-Kid.tscn", delay, "HeartAttack")
 	
-func growUp(delay):
+func growUp(delay, specialScene = "None"):
 	isOld = true
-	SceneChanger.change_scene("res://Rooms/" + currentRoom + "-Old.tscn", delay)
+	glMusicController.playKid()
+	SceneChanger.change_scene("res://Rooms/" + currentRoom + "-Old.tscn", delay, specialScene)
