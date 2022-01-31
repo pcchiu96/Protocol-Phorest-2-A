@@ -277,7 +277,7 @@ script = ExtResource( 12 )
 
 [node name="Closet" type="StaticBody2D" parent="."]
 script = ExtResource( 24 )
-promptText = "This is a closet"
+promptText = "Of course I know how to dress...I've spent my lifetime in the closet."
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Closet"]
 position = Vector2( 133, 411.5 )
