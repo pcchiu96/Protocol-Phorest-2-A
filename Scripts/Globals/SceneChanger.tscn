@@ -548,7 +548,8 @@ script = ExtResource( 13 )
 
 [node name="KidBGM" type="AudioStreamPlayer" parent="MusicController"]
 stream = ExtResource( 16 )
-volume_db = 1.0
+volume_db = -15.0
 
 [node name="OldManBGM" type="AudioStreamPlayer" parent="MusicController"]
 stream = ExtResource( 15 )
+volume_db = -15.0

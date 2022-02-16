@@ -250,7 +250,7 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-selectionString = "Screamo"
+selectionString = "MorningNews"
 targetNodeNames = [ "DialogBox", "Alarm" ]
 
 [node name="SpikDefusOpt" type="Button" parent="Alarm/AlarmSelection"]

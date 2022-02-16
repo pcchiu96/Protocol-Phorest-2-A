@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://Assets/bedroom-bed.png" type="Texture" id=1]
 [ext_resource path="res://Assets/old-man-walk-1.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Assets/bedroom-floor.png" type="Texture" id=12]
 [ext_resource path="res://Rooms/DialogBox.gd" type="Script" id=13]
 [ext_resource path="res://Assets/ZenKurenaido-Regular.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://Assets/Audio/meteor_on_earth_nao.wav" type="AudioStream" id=15]
 [ext_resource path="res://Assets/Yiruma-River-Flows-In-You.mp3" type="AudioStream" id=16]
 [ext_resource path="res://Rooms/AutoInteract.gd" type="Script" id=17]
 [ext_resource path="res://Assets/Alert-Triangle.png" type="Texture" id=18]
@@ -23,6 +24,7 @@
 [ext_resource path="res://Assets/old-man-zoom.png" type="Texture" id=22]
 [ext_resource path="res://Assets/old-paper.png" type="Texture" id=23]
 [ext_resource path="res://Rooms/Interactable.gd" type="Script" id=24]
+[ext_resource path="res://Assets/Audio/Scream.wav" type="AudioStream" id=25]
 
 [sub_resource type="GDScript" id=9]
 script/source = "extends Node
@@ -296,11 +298,10 @@ texture = ExtResource( 5 )
 [node name="Alarm" type="StaticBody2D" parent="."]
 script = ExtResource( 4 )
 __meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
+"_edit_group_": true
 }
 promptText = "Time is always ticking, letting me know I gotta keep on moving."
-alarmSounds = [ null, null, ExtResource( 20 ), ExtResource( 16 ) ]
+alarmSounds = [ ExtResource( 25 ), ExtResource( 15 ), ExtResource( 20 ), ExtResource( 16 ) ]
 alarmSongsList = [ "Screamo", "MorningNews", "SpikeDefuse", "RvrFlwsInYou" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Alarm"]

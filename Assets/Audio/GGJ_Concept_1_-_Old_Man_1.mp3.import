@@ -11,5 +11,5 @@ dest_files=[ "res://.import/GGJ_Concept_1_-_Old_Man_1.mp3-272b1733859704604acb10
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0

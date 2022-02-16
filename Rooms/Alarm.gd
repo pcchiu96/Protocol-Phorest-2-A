@@ -1,6 +1,6 @@
 extends "res://Rooms/Interactable.gd"
 
-export (Array, AudioStreamMP3) var alarmSounds
+export (Array, AudioStream) var alarmSounds
 
 export (Array, String) var alarmSongsList
 
@@ -26,4 +26,5 @@ func triggerAutoInteract():
 	soundPlayer.play()
 	print("Play sounds")
 	if(Main.gameData["SelectedAlarm"] != Main.gameData["SafeAlarm"]):
-		Main.heartAttack(1.5)
+		yield(soundPlayer, "finished")
+		Main.heartAttack(0)
