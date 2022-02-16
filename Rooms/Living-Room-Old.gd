@@ -10,5 +10,3 @@ func _ready():
 func _enter_tree():
 	if !Main.gameData["HealthyEater"]:
 		Main.heartAttack(0.5)
-	
-	find_node("DialogBox").displayDialog("")

@@ -11,7 +11,7 @@
 [ext_resource path="res://Assets/coffee table.png" type="Texture" id=9]
 [ext_resource path="res://Rooms/Burglar.gd" type="Script" id=10]
 [ext_resource path="res://Rooms/Living-Room-Old.gd" type="Script" id=11]
-[ext_resource path="res://Rooms/Bedroom-Exit.gd" type="Script" id=12]
+[ext_resource path="res://Rooms/Living-Room-Exit.gd" type="Script" id=12]
 [ext_resource path="res://Rooms/CoffeeTable.gd" type="Script" id=13]
 [ext_resource path="res://Assets/Inspect Icon White.png" type="Texture" id=14]
 [ext_resource path="res://Assets/ZenKurenaido-Regular.ttf" type="DynamicFontData" id=15]
@@ -307,7 +307,7 @@ tracks/0/keys = {
 script = ExtResource( 11 )
 
 [node name="Old Man" type="KinematicBody2D" parent="."]
-position = Vector2( 529, 348 )
+position = Vector2( 297, 213 )
 z_index = 1
 script = ExtResource( 1 )
 
