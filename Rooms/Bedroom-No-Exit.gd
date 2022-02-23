@@ -4,16 +4,16 @@ export (String) var roomname
 
 var isActive = false
 
+var dialogBox
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	dialogBox = find_parent("Bedroom-Kid").find_node("DialogBox")
 
 func _input(event):
 	if Input.is_action_pressed("ui_interact"):
 		print("Interact Pressed")
 		print(isActive)
-		if(isActive):
-			find_parent("Bedroom-Kid").find_node("DialogBox").displayDialog("Your fate 'hinges' on what you choose to do here.")
 
 func triggerOptions():
 	find_node("AlarmSelection").visible = true
@@ -21,8 +21,11 @@ func triggerOptions():
 		
 func interactHover():
 	print("Exit - Hover")
-	isActive = true
+	isActive = true			
+	dialogBox.displayDialog("Your fate 'hinges' on what you choose to do here.")
+
 	
 func interactLeave():
 	print("Exit - Leave")
 	isActive = false
+	dialogBox.closeDialogBox()

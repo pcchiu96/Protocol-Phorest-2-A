@@ -14,9 +14,12 @@ func displayDialog(text):
 func optionSelect(selectionString):
 	visible = false
 	$AnimationPlayer.stop()
+	
+func closeDialogBox():
+	Main.inDialog = false
+	visible = false
+	$AnimationPlayer.stop()
 
 func _input(event):
 	if visible && Input.is_action_pressed("ui_accept"):
-		Main.inDialog = false
-		visible = false
-		$AnimationPlayer.stop()
+		closeDialogBox()

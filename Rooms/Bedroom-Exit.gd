@@ -4,9 +4,11 @@ export (String) var roomname
 
 var isActive = false
 
+var dialogBox
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	dialogBox = find_parent("Bedroom-Old").find_node("DialogBox")
 
 func _input(event):
 	if Input.is_action_pressed("ui_interact"):
@@ -14,7 +16,6 @@ func _input(event):
 		print(isActive)
 		if(isActive):
 			Main.currentRoom = roomname
-			find_parent("Bedroom-Old").find_node("DialogBox").displayDialog("Do you think I'm a-door-able?")
 			SceneChanger.change_scene("res://Rooms/" + roomname + "-"+  Main.getIsOldString() +".tscn")
 
 func triggerOptions():
@@ -23,9 +24,11 @@ func triggerOptions():
 		
 func interactHover():
 	print("Exit - Hover")
-	isActive = true
-			
+	isActive = true			
+	dialogBox.displayDialog("Do you think I'm a-door-able?\n (Press 'E' to go to the next room)")
+
 	
 func interactLeave():
 	print("Exit - Leave")
 	isActive = false
+	dialogBox.closeDialogBox()
