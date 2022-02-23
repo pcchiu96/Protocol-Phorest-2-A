@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Scripts/Globals/SceneChanger.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Cutscenes/YouDied.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Assets/Audio/GGJ_Concept_1_-_Old_Man_1.mp3" type="AudioStream" id=15]
 [ext_resource path="res://Assets/Audio/GGJ_Concept_1_-_kid_theme.mp3" type="AudioStream" id=16]
 [ext_resource path="res://Assets/Audio/Vase Falling and Crashing.wav" type="AudioStream" id=17]
+[ext_resource path="res://Assets/Audio/fruit_a.wav" type="AudioStream" id=18]
 
 [sub_resource type="Animation" id=7]
 resource_name = "BaseballScene"
@@ -250,7 +251,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "HeartAttack"
-length = 1.5
+length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("HeartAttackScene-1:visible")
 tracks/0/interp = 1
@@ -294,10 +295,38 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1.3, 1.5 ),
+"times": PoolRealArray( 0, 1.3, 2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
+}
+tracks/4/type = "audio"
+tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 18 )
+} ],
+"times": PoolRealArray( 1.1 )
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.250965,
+"start_offset": 0.25,
+"stream": ExtResource( 10 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=2]
@@ -536,7 +565,7 @@ position = Vector2( 640, 360 )
 texture = ExtResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 17 )
+stream = ExtResource( 18 )
 
 [node name="Credits" type="Sprite" parent="."]
 visible = false
