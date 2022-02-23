@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Assets/ZenKurenaido-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Rooms/EndingTrigger.gd" type="Script" id=2]
@@ -13,13 +13,16 @@
 [ext_resource path="res://Assets/bedroom-floor.png" type="Texture" id=11]
 [ext_resource path="res://Assets/hallway-old-top-and-sides.png" type="Texture" id=12]
 [ext_resource path="res://Assets/hallway-old-bottom-wall.png" type="Texture" id=13]
+[ext_resource path="res://Assets/shadow.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Audio/oldman0.4typebeat.wav" type="AudioStream" id=15]
+[ext_resource path="res://Assets/Audio/OldManFootSteps.wav" type="AudioStream" id=16]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 30, 18 )
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=18]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=19]
 resource_name = "Idle"
 length = 0.2
 tracks/0/type = "value"
@@ -34,8 +37,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ ExtResource( 7 ) ]
 }
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [  ],
+"times": PoolRealArray(  )
+}
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=20]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -50,7 +63,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 9 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=21]
 resource_name = "Run Left"
 length = 0.4
 loop = true
@@ -67,8 +80,22 @@ tracks/0/keys = {
 "update": 1,
 "values": [ ExtResource( 9 ), ExtResource( 7 ) ]
 }
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 15 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=22]
 resource_name = "Run Right"
 length = 0.4
 loop = true
@@ -85,9 +112,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [ ExtResource( 9 ), ExtResource( 7 ) ]
 }
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 15 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 640, 92 )
+extents = Vector2( 640, 87.5 )
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 45, 360 )
@@ -147,17 +188,15 @@ tracks/0/keys = {
 [node name="Hallway-Old" type="Node2D"]
 
 [node name="Old Man" type="KinematicBody2D" parent="."]
-position = Vector2( 288, 216 )
+position = Vector2( 292, 208 )
 z_index = 1
-collision_layer = 32769
-collision_mask = 32769
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Feet" type="CollisionShape2D" parent="Old Man"]
-shape = SubResource( 1 )
+shape = SubResource( 17 )
 
 [node name="Sprite" type="Sprite" parent="Old Man"]
 position = Vector2( 0, -112 )
@@ -168,18 +207,26 @@ script = ExtResource( 3 )
 
 [node name="TouchySensorShape" type="CollisionShape2D" parent="Old Man/TouchySensorArea"]
 modulate = Color( 1, 0, 0, 1 )
-shape = SubResource( 2 )
+shape = SubResource( 18 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Old Man"]
-anims/Idle = SubResource( 3 )
-anims/RESET = SubResource( 4 )
-"anims/Run Left" = SubResource( 5 )
-"anims/Run Right" = SubResource( 6 )
+anims/Idle = SubResource( 19 )
+anims/RESET = SubResource( 20 )
+"anims/Run Left" = SubResource( 21 )
+"anims/Run Right" = SubResource( 22 )
 script = ExtResource( 11 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Old Man"]
+stream = ExtResource( 16 )
+
+[node name="Shadow" type="Sprite" parent="Old Man"]
+modulate = Color( 1, 1, 1, 0.4 )
+position = Vector2( -2, 5 )
+z_index = -1
+texture = ExtResource( 14 )
 
 [node name="Borders" type="StaticBody2D" parent="."]
 __meta__ = {
-"_edit_group_": true,
 "_edit_lock_": true
 }
 
@@ -188,15 +235,16 @@ z_index = -1
 texture = ExtResource( 11 )
 centered = false
 
-[node name="Top Wall" type="CollisionShape2D" parent="Borders"]
-position = Vector2( 641, 92 )
-shape = SubResource( 7 )
-
-[node name="Sprite" type="Sprite" parent="Borders/Top Wall"]
-position = Vector2( 0, -17 )
+[node name="TopWallSprite" type="Sprite" parent="Borders"]
+position = Vector2( 641, 75 )
+z_index = 15
 texture = ExtResource( 12 )
 centered = false
 offset = Vector2( -640, -75 )
+
+[node name="Top Wall" type="CollisionShape2D" parent="Borders"]
+position = Vector2( 641, 87.5 )
+shape = SubResource( 7 )
 
 [node name="Left Wall" type="CollisionShape2D" parent="Borders"]
 position = Vector2( 45, 360 )
