@@ -46,8 +46,11 @@ func get_input():
 	velocity = velocity.normalized() * speed
 
 func _physics_process(delta):
-	if(!Main.isFrozen):
-		get_input()
-		velocity = move_and_slide(velocity)
-		$TouchySensorArea.position = touchySensor
+	if Main.isPlayerFrozen():
+		$AnimationPlayer.play("Idle")
+		return
+		
+	get_input()
+	velocity = move_and_slide(velocity)
+	$TouchySensorArea.position = touchySensor
 

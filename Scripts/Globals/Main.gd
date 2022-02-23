@@ -9,16 +9,17 @@ var gameData = {
 		"NinjaSafe" : false,
 		"HealthyEater" : true
 	}
-var isFrozen
-
+var inDialog
+var inEvent
 var currentRoom = "Bedroom"
-
 var glMusicController
+
 
 
 func _ready():
 	isOld = true
-	isFrozen = false
+	inDialog = false
+	inEvent = false
 	
 
 func getIsOldString():
@@ -29,11 +30,20 @@ func getIsOldString():
 
 
 func heartAttack(delay): 
+	inEvent = true
 	isOld = false
 	glMusicController.playOldMan()
 	SceneChanger.change_scene("res://Rooms/" + currentRoom + "-Kid.tscn", delay, "HeartAttack")
 	
 func growUp(delay, specialScene = "None"):
+	inEvent = true
 	isOld = true
 	glMusicController.playKid()
 	SceneChanger.change_scene("res://Rooms/" + currentRoom + "-Old.tscn", delay, specialScene)
+
+func isPlayerFrozen():
+	return inDialog || inEvent
+	
+func clearPlayerFrozen():
+	inDialog = false
+	inEvent = false

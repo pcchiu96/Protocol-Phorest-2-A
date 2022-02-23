@@ -1,7 +1,11 @@
 extends "res://Rooms/Interactable.gd"
 
+
+var foodSelectionUI
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	foodSelectionUI = get_parent().find_node("FoodSelection")
 	pass # Replace with function body.
 
 func optionSelect(optionString):
@@ -11,10 +15,15 @@ func optionSelect(optionString):
 	Main.growUp(0.5)
 	
 func triggerOptions():
-	if(get_parent().find_node("FoodSelection")!=null):
-		#get_parent().find_node("FoodSelection").popup()
-		get_parent().find_node("FoodSelection").visible = true
-			
+	if(foodSelectionUI!=null):
+		foodSelectionUI.visible = true
+
+func _input(event):
+	if(foodSelectionUI!=null):
+		if foodSelectionUI.visible && Input.is_action_pressed("ui_accept"):
+			foodSelectionUI.visible = false
+
+		
 		
 func triggerAutoInteract():
 	#var alarm = alarmSounds[alarmSongsList.find(Main.gameData["SelectedAlarm"])]

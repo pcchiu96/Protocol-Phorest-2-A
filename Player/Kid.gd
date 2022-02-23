@@ -8,7 +8,7 @@ var velocity = Vector2()
 var touchySensor = Vector2()
 var direction
 
-func get_input():
+func get_input():	
 	velocity = Vector2()
 	if Input.is_action_pressed("right"):
 		direction = "right"
@@ -46,6 +46,10 @@ func get_input():
 	velocity = velocity.normalized() * speed
 
 func _physics_process(delta):
+	if Main.isPlayerFrozen():
+		$AnimationPlayer.play("Idle")
+		return
+	
 	get_input()
 	velocity = move_and_slide(velocity)
 	

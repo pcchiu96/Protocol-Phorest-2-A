@@ -8,6 +8,7 @@ func _ready():
 
 func triggerOptions():
 	Main.gameData["NinjaSafe"] = true
+	Main.inEvent = true
 	
 	get_node("Sfx").play()
 	

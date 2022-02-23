@@ -11,7 +11,9 @@ func change_scene(path, delay = 0.5, animation="None"):
 	if(animation != "None"):
 		animation_player.play(animation)
 		yield(animation_player, "animation_finished")
-		
+	
+	Main.clearPlayerFrozen()
+	
 	assert (get_tree().change_scene(path) == OK)
 	animation_player.play_backwards("Fade")
 	yield(animation_player, "animation_finished")

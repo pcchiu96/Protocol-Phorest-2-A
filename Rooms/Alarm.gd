@@ -17,11 +17,19 @@ func optionSelect(optionString):
 func triggerOptions():
 	if(find_node("AlarmSelection")!=null):
 		find_node("AlarmSelection").visible = true		
+	
+func _input(event):
+	if(find_node("AlarmSelection")!=null):
+		if find_node("AlarmSelection").visible && Input.is_action_pressed("ui_accept"):
+			find_node("AlarmSelection").visible = false
+
 		
 func triggerAutoInteract():
 	var alarm = alarmSounds[alarmSongsList.find(Main.gameData["SelectedAlarm"])]
 	var soundPlayer = get_node("AlarmSoundPlayer")
 		
+	Main.inEvent = true
+	
 	soundPlayer.stream = alarm
 	soundPlayer.play()
 	print("Play sounds")
