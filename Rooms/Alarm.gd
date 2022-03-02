@@ -12,7 +12,7 @@ func optionSelect(optionString):
 	Main.gameData["SelectedAlarm"] = optionString
 	print(Main.gameData["SelectedAlarm"])
 	
-	Main.growUp(0.5)
+	Main.growUp(0)
 		
 func triggerOptions():
 	if(find_node("AlarmSelection")!=null):
@@ -28,11 +28,11 @@ func triggerAutoInteract():
 	var alarm = alarmSounds[alarmSongsList.find(Main.gameData["SelectedAlarm"])]
 	var soundPlayer = get_node("AlarmSoundPlayer")
 		
-	Main.inEvent = true
 	
 	soundPlayer.stream = alarm
 	soundPlayer.play()
 	print("Play sounds")
 	if(Main.gameData["SelectedAlarm"] != Main.gameData["SafeAlarm"]):
+		Main.inEvent = true
 		yield(soundPlayer, "finished")
 		Main.heartAttack(0)

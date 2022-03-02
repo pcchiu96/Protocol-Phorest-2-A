@@ -288,7 +288,7 @@ script = SubResource( 9 )
 inspectorIcon = ExtResource( 2 )
 
 [node name="Old Man" type="KinematicBody2D" parent="."]
-position = Vector2( 294, 667 )
+position = Vector2( 1024, 268 )
 z_index = 1
 script = ExtResource( 8 )
 __meta__ = {

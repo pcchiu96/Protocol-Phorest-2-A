@@ -35,7 +35,7 @@ func heartAttack(delay):
 	glMusicController.playOldMan()
 	SceneChanger.change_scene("res://Rooms/" + currentRoom + "-Kid.tscn", delay, "HeartAttack")
 	
-func growUp(delay, specialScene = "None"):
+func growUp(delay, specialScene = "Calendar Flip"):
 	inEvent = true
 	isOld = true
 	glMusicController.playKid()
